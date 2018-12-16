@@ -50,7 +50,7 @@ def classify_exam(data, names, binary=True, appendname=False):
                 break
     if re.search('L-', names[0], flags=re.IGNORECASE):
         solution = True
-    # Search the document for information
+    # Search the document for information.
     if year is None:
         yearcounts = [(count_matches(str(year), text), str(year)) for year in range(1990, 2020)]
         year = max(yearcounts, key=lambda yc: yc[0])[1]
