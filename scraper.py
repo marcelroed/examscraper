@@ -32,17 +32,18 @@ class Scraper:
 
     # Apply filters
     def apply_filters(self):
-        filtered = self.urls
-        for filter in self.filter:
-            filtered = filter(filter, filtered)
-        self.urls = list(filtered)
+        filtered = self.documents
+        for curfilter in self.filters:
+            filtered = filter(curfilter, filtered)
+        self.documents = list(filtered)
 
     def find_urls(self, contained_word):
         elements = self.browser.find_link_by_partial_href(contained_word)
         for element in elements:
             document = {
                 'href': element['href'],
-                'text': element['text']
+                'text': element['text'],
+                'filename': element['href'].split('/')[-1]
             }
             print(document)
             self.documents.append(document)
@@ -53,7 +54,6 @@ class Scraper:
         for document in self.documents:
             response = self.http.request('GET', document['href'])
             document['data'] = response.data
-            document['filename'] = document['href'].split('/')[-1]
 
         result = self.documents
         self.documents = {}

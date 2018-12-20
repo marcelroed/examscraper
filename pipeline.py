@@ -16,15 +16,17 @@ def main():
         write_binary(directory, filename+'.pdf', exam['data'], overwrite=False)
 
 def lectures():
-    directory = 'M:/OneDrive - NTNU/Subjects/15 Matte 4K/lectures/'
-    starturl = "https://www.ntnu.no/web/fysikk/eksamen/-/asset_publisher/mQ9ArUokS3mD/content/tfy4165-termisk-fysikk/"
+    directory = 'M:/OneDrive - NTNU/Subjects/20 Termisk fysikk/lectures/'
+    starturl = "http://folk.ntnu.no/martifja/"
     scraper = Scraper(starturl)
+    scraper.add_filters([lambda x: "uke" in x['filename']])
     scraper.find_urls('.pdf')
     files = scraper.read()
     print(len(files))
-    for name, data in files:
-        filename = name
-        write_binary(directory, filename, data)
+    for file in files:
+        filename = file['filename']
+        write_binary(directory, filename, file['data'])
 
 if __name__ == '__main__':
-    main()
+    #main()
+    lectures()
