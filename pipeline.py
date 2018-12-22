@@ -19,7 +19,7 @@ def lectures():
     directory = 'M:/OneDrive - NTNU/Subjects/20 Termisk fysikk/lectures/'
     starturl = "http://folk.ntnu.no/martifja/"
     scraper = Scraper(starturl)
-    scraper.add_filters([lambda x: "uke" in x['filename']])
+    scraper.add_filters([lambda x: "uke" in x['filename'].lower()])
     scraper.find_urls('.pdf')
     files = scraper.read()
     print(len(files))
