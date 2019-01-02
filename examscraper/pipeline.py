@@ -1,19 +1,27 @@
 from scraper import Scraper
 from write import write_binary
 from pdfkeywords import classify_exam
+from configure import read_configuration
+from extract_text import extract
 
 def main():
-    directory = 'C:/Users/Marcel/OneDrive - NTNU/Subjects/20 Termisk fysikk/exams/'
-    starturl = "https://www.ntnu.no/web/fysikk/eksamen/-/asset_publisher/mQ9ArUokS3mD/content/tfy4165-termisk-fysikk"
-    scraper = Scraper(starturl)
-    scraper.find_urls('.pdf')
-    exams = scraper.read()
-    print(len(exams))
-    print(list(map(lambda exam: (exam['text']), exams)))
-    for exam in exams:
-        filename = classify_exam(data=exam['data'], names=[exam['text'], exam['filename']], binary=True)
-        print('Classified {} as {}.'.format(exam['text'], filename))
-        write_binary(directory, filename+'.pdf', exam['data'], overwrite=False)
+    # Read config file
+    config = read_configuration()
+    print("Read config!")
+    for name, job in config['jobs'].items():
+        print("Executing job '{}'".format(name))
+        scraper = Scraper(job['startUrl'])
+        scraper.find_urls('.'+job['fileType'])
+        matches = scraper.read()
+        scraper.close()
+        print(list(map(lambda match: (match['text']), matches)))
+        for match in matches:
+            text = extract(match['data'], job['fileType'])
+            filename = classify(data=exam['data'], names=[exam['text'], exam['filename']])
+            print('Classified {} as {}.'.format(exam['text'], filename))
+            write_binary(directory, filename+'.pdf', exam['data'], overwrite=False)
+    exit()
+
 
 def lectures():
     directory = 'M:/OneDrive - NTNU/Subjects/20 Termisk fysikk/lectures/'
@@ -29,4 +37,3 @@ def lectures():
 
 if __name__ == '__main__':
     main()
-    #lectures()
