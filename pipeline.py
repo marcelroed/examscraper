@@ -3,7 +3,7 @@ from write import write_binary
 from pdfkeywords import classify_exam
 
 def main():
-    directory = 'M:/OneDrive - NTNU/Subjects/20 Termisk fysikk/exams/'
+    directory = 'C:/Users/Marcel/OneDrive - NTNU/Subjects/20 Termisk fysikk/exams/'
     starturl = "https://www.ntnu.no/web/fysikk/eksamen/-/asset_publisher/mQ9ArUokS3mD/content/tfy4165-termisk-fysikk"
     scraper = Scraper(starturl)
     scraper.find_urls('.pdf')
@@ -28,5 +28,5 @@ def lectures():
         write_binary(directory, filename, file['data'])
 
 if __name__ == '__main__':
-    #main()
-    lectures()
+    main()
+    #lectures()

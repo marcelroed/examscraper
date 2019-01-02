@@ -44,7 +44,7 @@ def classify_exam(data, names, binary=True, appendname=False):
     for iteryear in range(1990, 2020):
         if done: break
         for itermonth in months:
-            if re.search('(' + '|'.join(itermonth[1]) + ')'+str(iteryear), ' '.join(names), flags=re.IGNORECASE):
+            if re.search('(' + '|'.join(itermonth[1]) + ')' + str(iteryear), ' '.join(names), flags=re.IGNORECASE):
                 year, month = str(iteryear), itermonth[0]
                 done = True
                 break

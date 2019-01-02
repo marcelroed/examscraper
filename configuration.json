@@ -1,0 +1,34 @@
+{
+  "jobs":{
+    "termisk":{
+      "starturl": "https://www.ntnu.no/web/fysikk/eksamen/-/asset_publisher/mQ9ArUokS3mD/content/tfy4165-termisk-fysikk",
+      "destinationDir": "C:/Users/Marcel/OneDrive - NTNU/Subjects/20 Termisk fysikk/exams/",
+      "fileType": "pdf",
+      "naming":{
+        "year":{
+          "type":"range",
+          "evaluateBy": "ocurrence",
+          "min": 1990,
+          "max": 2019,
+          "default": ".XXXX"
+        },
+        "season":{
+          "type": "class",
+          "classes": {
+            "V": ["mai", "juni", "jun", "may", "june", "spring", "vår"],
+            "H": ["november", "desember", "december", "høst", "fall", "dec", "des", "nov"],
+            "K": ["august", "aug", "sommer", "summer"]
+          },
+          "default": "U"
+        },
+        "solution":{
+          "type": "class",
+          "classes":{
+            "L": ["løsningsforslag", "fasit"]
+          },
+          "default": ""
+        }
+      }
+    }
+  }
+}
