@@ -42,7 +42,7 @@ class Scraper:
         for element in elements:
             document = {
                 'href': element['href'],
-                'text': element['text'],
+                'linkText': element['text'],
                 'filename': element['href'].split('/')[-1]
             }
             print(document)

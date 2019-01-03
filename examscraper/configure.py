@@ -1,6 +1,6 @@
 from sys import argv
 from pathlib import Path
-import pandas as pd
+import json
 
 def read_configuration():
     config_path = _get_path(argv)
@@ -25,4 +25,5 @@ def _get_path(arguments):
     return config
 
 def _load_config(cfg_path):
-    return pd.read_json(cfg_path.as_uri())
+    with open(cfg_path, 'r') as f:
+        return json.load(f)

@@ -17,8 +17,8 @@ def main():
         print(list(map(lambda match: (match['text']), matches)))
         for match in matches:
             text = extract(match['data'], job['fileType'])
-            filename = classify(data=exam['data'], names=[exam['text'], exam['filename']])
-            print('Classified {} as {}.'.format(exam['text'], filename))
+            filename = classify(text=text, names=[match['linkText'], match['filename']])
+            print('Classified {} as {}.'.format(match['linkText'], filename))
             write_binary(directory, filename+'.pdf', exam['data'], overwrite=False)
     exit()
 
