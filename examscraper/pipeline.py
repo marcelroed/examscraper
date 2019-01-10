@@ -1,8 +1,9 @@
 from scraper import Scraper
 from write import write_binary
-from pdfkeywords import classify_exam
+from classify_text import generate_name
 from configure import read_configuration
 from extract_text import extract
+
 
 def main():
     # Read config file
@@ -17,9 +18,10 @@ def main():
         print(list(map(lambda match: (match['text']), matches)))
         for match in matches:
             text = extract(match['data'], job['fileType'])
-            filename = classify(text=text, names=[match['linkText'], match['filename']])
+            filename = generate_name(job['naming'], text=text, names=[
+                                     match['linkText'], match['filename']])
             print('Classified {} as {}.'.format(match['linkText'], filename))
-            write_binary(directory, filename+'.pdf', exam['data'], overwrite=False)
+            write_binary(job['destinationDir'], filename+'.pdf', exam['data'], overwrite=False)
     exit()
 
 
@@ -34,6 +36,7 @@ def lectures():
     for file in files:
         filename = file['filename']
         write_binary(directory, filename, file['data'])
+
 
 if __name__ == '__main__':
     main()
