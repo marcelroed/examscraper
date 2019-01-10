@@ -18,14 +18,19 @@
             "H": ["november", "desember", "december", "høst", "fall", "dec", "des", "nov"],
             "K": ["august", "aug", "sommer", "summer"]
           },
-          "default": "U"
+          "default": "U",
+          "prioritizeNames": true
         },
         "solution":{
           "type": "class",
           "classes":{
             "L": ["løsningsforslag", "fasit"]
           },
-          "default": ""
+          "default": "",
+          "prioritizeNames": true,
+          "nameAdditions": {
+            "L": ["lf"]
+          }
         }
       }
     }
