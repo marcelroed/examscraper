@@ -1,12 +1,14 @@
-import urllib3
-
 import splinter
+import urllib3
 from selenium import webdriver
+
 
 def __init__():
     pass
 
+
 urllib3.disable_warnings()
+
 
 class Scraper:
     def __init__(self, starturl):
@@ -19,8 +21,9 @@ class Scraper:
         # Start browser
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--disable-infobars")
+        chrome_options.add_argument("--headless")
         self.browser = splinter.Browser('chrome', options=chrome_options)
-        self.browser.driver.maximize_window()
+        # self.browser.driver.maximize_window()
         self.browser.visit(starturl)
 
     def set_filters(self, filters):
@@ -45,10 +48,11 @@ class Scraper:
                 'linkText': element['text'],
                 'filename': element['href'].split('/')[-1]
             }
-            print(document)
+            # print(document)
             self.documents.append(document)
         if self.filters:
             self.apply_filters()
+        return self.documents
 
     def read(self):
         for document in self.documents:

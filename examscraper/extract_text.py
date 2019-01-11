@@ -1,11 +1,13 @@
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from io import BytesIO
+from io import StringIO
+
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
-from io import StringIO
-from io import BytesIO
 
-def _pdf_to_text(data, binary = True):
+
+def _pdf_to_text(data, binary=True):
     rsrcmgr = PDFResourceManager()
     retstr = StringIO()
     codec = 'utf-8'
@@ -20,9 +22,10 @@ def _pdf_to_text(data, binary = True):
     password = ""
     maxpages = 0
     caching = True
-    pagenos=set()
+    pagenos = set()
 
-    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password, caching=caching,
+                                  check_extractable=True):
         interpreter.process_page(page)
 
     text = retstr.getvalue()
@@ -32,6 +35,7 @@ def _pdf_to_text(data, binary = True):
     retstr.close()
     return text
 
-def text(data, file_type):
+
+def extract(data, file_type):
     if file_type == 'pdf':
         return _pdf_to_text(data)

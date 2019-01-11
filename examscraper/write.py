@@ -1,5 +1,6 @@
 from pathlib import Path
 
+
 def write_binary(location, filename, data, overwrite=False):
     slug = ''
     if not overwrite:
@@ -9,12 +10,13 @@ def write_binary(location, filename, data, overwrite=False):
                 if slug == '':
                     slug = '1'
                 else:
-                    slug = str(int(slug)+1)
+                    slug = str(int(slug) + 1)
             else:
                 break
     file = open(construct_name(location, filename, slug), 'wb')
     file.write(data)
     file.close()
 
+
 def construct_name(location, filename, slug):
-    return location + '.'.join(filename.split('.')[:-1])+slug+'.'+filename.split('.')[-1]
+    return location + '.'.join(filename.split('.')[:-1]) + slug + '.' + filename.split('.')[-1]
