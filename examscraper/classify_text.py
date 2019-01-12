@@ -16,12 +16,6 @@ def generate_name(naming, text, names):
     return name
 
 
-"""class Classifier:
-    def __init__(self, document):
-        self.document = document
-"""
-
-
 def _classify_class(fragment, text, names):
     # TODO: Use _unique and _strict_max, like in _classify_range
     # TODO: Add targeting of specific names
@@ -69,7 +63,8 @@ def _classify_range(fragment, text, names):
     rmax = fragment.get('max', rmin)
     # Check names first
     if fragment.get('prioritizeNames', False):
-        name_counts = [(str(num), _count_matches(str(num), namestring)) for num in range(rmin, rmax)]
+        name_counts = [(str(num), _count_matches(str(num), namestring))
+                       for num in range(rmin, rmax)]
         max_count = _strict_max(name_counts, lambda x: x[1])
         if max_count is not None and max_count[1] != 0:
             return max_count[0]

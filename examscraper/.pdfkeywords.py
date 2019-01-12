@@ -13,7 +13,8 @@ def classify(text, names, binary=True, appendname=False):
     done = False
     # Search titles for information
     for iteryear in range(1990, 2020):
-        if done: break
+        if done:
+            break
         for itermonth in months:
             if re.search('(' + '|'.join(itermonth[1]) + ')' + str(iteryear), ' '.join(names), flags=re.IGNORECASE):
                 year, month = str(iteryear), itermonth[0]
@@ -26,7 +27,8 @@ def classify(text, names, binary=True, appendname=False):
         yearcounts = [(count_matches(str(year), doctext), str(year)) for year in range(1990, 2020)]
         year = max(yearcounts, key=lambda yc: yc[0])[1]
     if month is None:
-        monthcounts = [(count_matches('(' + '|'.join(month[1]) + ')', doctext), month[0]) for month in months]
+        monthcounts = [(count_matches('(' + '|'.join(month[1]) + ')', doctext), month[0])
+                       for month in months]
         month = max(monthcounts, key=lambda mc: mc[0])[1]
 
     if solution is None:
