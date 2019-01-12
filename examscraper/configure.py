@@ -1,3 +1,4 @@
+import codecs
 import json
 from pathlib import Path
 
@@ -26,5 +27,5 @@ def _get_path(arguments):
 
 
 def _load_config(cfg_path):
-    with open(cfg_path, 'r') as f:
+    with codecs.open(cfg_path, 'r', encoding='UTF-8') as f:
         return json.load(f)

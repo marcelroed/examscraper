@@ -9,6 +9,7 @@
           "type":"range",
           "min": 1990,
           "max": 2019,
+          "prioritizeNames": true,
           "default": ".XXXX"
         },
         "season":{
@@ -29,7 +30,13 @@
           "default": "",
           "prioritizeNames": true,
           "nameAdditions": {
-            "L": ["lf"]
+            "L": [
+              "lf",
+              "L\\-"
+            ],
+            "": [
+              "E\\-"
+            ]
           }
         }
       }
