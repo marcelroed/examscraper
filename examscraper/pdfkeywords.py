@@ -1,7 +1,8 @@
 import re
 
 
-# Names is a list of names that are appended to text of pdf. The first name is checked first, and used as a default file name if tests fail.
+# Names is a list of names that are appended to text of pdf. The first name is checked first,
+# and used as a default file name if tests fail.
 def classify(text, names, binary=True, appendname=False):
     doctext = " ".join(names) + ' ' + text
     months = [('-1V', ['mai', 'juni', 'jun', 'may', 'june', 'spring', 'vår']),
