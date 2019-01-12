@@ -1,31 +1,56 @@
 {
-  "jobs":{
-    "termisk":{
+  "jobs": {
+    "termisk": {
       "startUrl": "https://www.ntnu.no/web/fysikk/eksamen/-/asset_publisher/mQ9ArUokS3mD/content/tfy4165-termisk-fysikk",
       "destinationDir": "C:/Users/Marcel/OneDrive - NTNU/Subjects/20 Termisk fysikk/exams/",
       "fileType": "pdf",
-      "naming":{
-        "year":{
-          "type":"range",
+      "naming": {
+        "year": {
+          "type": "range",
           "min": 1990,
           "max": 2019,
           "prioritizeNames": true,
           "default": ".XXXX"
         },
-        "season":{
+        "season": {
           "type": "class",
           "classes": {
-            "V": ["mai", "juni", "jun", "may", "june", "spring", "vår"],
-            "H": ["november", "desember", "december", "høst", "fall", "dec", "des", "nov"],
-            "K": ["august", "aug", "sommer", "summer"]
+            "V": [
+              "mai",
+              "juni",
+              "jun",
+              "may",
+              "june",
+              "spring",
+              "vår"
+            ],
+            "H": [
+              "november",
+              "desember",
+              "december",
+              "høst",
+              "fall",
+              "dec",
+              "des",
+              "nov"
+            ],
+            "K": [
+              "august",
+              "aug",
+              "sommer",
+              "summer"
+            ]
           },
           "default": "U",
           "prioritizeNames": true
         },
-        "solution":{
+        "solution": {
           "type": "class",
-          "classes":{
-            "L": ["løsningsforslag", "fasit"]
+          "classes": {
+            "L": [
+              "løsningsforslag",
+              "fasit"
+            ]
           },
           "default": "",
           "prioritizeNames": true,
