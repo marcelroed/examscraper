@@ -30,6 +30,7 @@ def main(argv=sys.argv[1:]):
             vprint('Classified {} as {}.'.format(match['linkText'], filename))
             write_binary(job['destinationDir'], filename + '.pdf', match['data'], overwrite=False)
 
+
 # def lectures():
 #     directory = 'M:/OneDrive - NTNU/Subjects/20 Termisk fysikk/lectures/'
 #     starturl = "http://folk.ntnu.no/martifja/"
@@ -42,5 +43,5 @@ def main(argv=sys.argv[1:]):
 #         filename = file['filename']
 #         write_binary(directory, filename, file['data'])
 
-# if __name__ == '__main__':
-#    main()
+if __name__ == "__main__":
+    main(sys.argv[1:])
